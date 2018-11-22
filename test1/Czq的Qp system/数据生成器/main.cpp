@@ -3,7 +3,7 @@ using namespace std;
 int f[51][51];
 bool fb[51][51]= {0};
 int rand_X(int x) {
-	srand((int)time(0));
+	srand(rand());
 	return rand()%x+1;
 }
 int main() {
