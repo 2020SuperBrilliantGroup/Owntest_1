@@ -1,17 +1,16 @@
 #include <bits/stdc++.h>
+#include <random>
 using namespace std;
 int f[51][51];
 bool fb[51][51]= {0};
 int rand_X(int x) {
-	srand(rand());
-	return rand()%x+1;
+	static uniform_int_distribution<unsigned> u(1,x);
+	static default_random_engine e;
+//	e.seed(time(0));
+	return u(e);
 }
-int main() {
+int fuc(int n,int m,int st,string filename) {
 	memset(f,-1,sizeof(f));
-	int n,m,st;
-	string filename;
-	cin>>n>>m>>st;
-	cin>>filename;
 	freopen(filename.c_str(),"w",stdout);
 	for(int i=1; i<=n; i++) {
 		for(int j=1; j<=n; j++) {
@@ -24,7 +23,8 @@ int main() {
 		y=rand_X(n);
 	}
 	for(int i=0; i<m; i++) {
-		f[x][y]=rand_X(500);
+		f[x][y]=rand_X(st);
+		fb[x][y]=false;
 		x=y;
 		y=rand_X(n);
 		while(!fb[x][y]) {
@@ -39,6 +39,13 @@ int main() {
 			}
 		}
 	}
-	cout<<st<<" "<<rand_X(st)-1;
+	cout<<st;
 	return 0;
+}
+int main(){
+	int n,m,st;
+	string filename;
+	cin>>n>>m>>st;
+	cin>>filename;
+	fuc(n,m,st,filename);
 }
