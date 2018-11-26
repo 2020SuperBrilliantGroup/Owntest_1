@@ -112,6 +112,9 @@ int main(){
 	else if(xi[w]!=1){
 		cout<<xi[w];
 	}
+	else if(ci[w]==0){
+		cout<<1;
+	}
 	if(ci[w]!=0){
 		cout<<'x';
 		if(ci[w]!=1){
