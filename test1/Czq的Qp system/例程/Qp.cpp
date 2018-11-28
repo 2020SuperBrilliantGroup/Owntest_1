@@ -1,4 +1,4 @@
-#include <iostream>
+#include<bits/stdc++.h>
 using namespace std;
 int n,m,st;
 int f[50][100]={0};
@@ -19,7 +19,9 @@ void dfs(int pos,int lq){
 	}
 	v[pos]=true;
 }
-int main() {
+int main(){
+	freopen("Qp.in","r",stdin);
+	freopen("Qp.out","w",stdout);
 	cin>>n>>m;
 	for(int i=0;i<m;i++){
 		int tb,te,tq;
