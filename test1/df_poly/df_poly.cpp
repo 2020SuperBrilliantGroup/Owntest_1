@@ -1,6 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
-string f,g;
+string f="",g="";
 queue<int>tnum;
 int turn(char hi){
 	int po=1,d=0,f=tnum.size()-1;
@@ -15,10 +15,10 @@ int turn(char hi){
 	return po*d;
 }
 int main(){
-	freopen("df_poly7.in","r",stdin);
-	freopen("df_poly7.ans","w",stdout);
+	freopen("df_poly.in","r",stdin);
+	freopen("df_poly.out","w",stdout);
 	int r,p,t,c=0,cx=1,con,w=0;
-	bool b=true,cs=false;
+	bool b=true,cs=false,ic=true;
 	char h;
 	for(int i=0;i<5;i++){
 		cin>>h;
@@ -58,6 +58,14 @@ int main(){
 		cout<<"f'(x)=0";
 		return 0;
 	}
+	for(int i=r-1;i>=0;i--){
+		if(f[i]=='+'||f[i]=='-'){
+			break;
+		}
+		if(f[i-3]=='x'){
+			ic=false;
+		}
+	}
 	vector<int>xi,ci;
 	xi.clear();
 	ci.clear();
@@ -82,11 +90,6 @@ int main(){
 	}//字符串形式转代数形式
 	t=xi.size();
 	for(int i=0;i<t;i++){
-		if(ci[i]>32768){
-			ci[i]=0;
-		}
-	}
-	for(int i=0;i<t;i++){
 		if(ci[i]!=0){
 			xi[i]*=ci[i];
 			ci[i]--;
@@ -95,6 +98,9 @@ int main(){
 				con=xi[i];
 			}
 		}
+	}
+	if(ic){
+		t--;
 	}
 	if(cs&&t>1&&ci[0]==0){
 		w++;
